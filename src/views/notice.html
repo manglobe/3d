@@ -1,0 +1,148 @@
+{% extends "default.html" %} {% block link %}
+<link rel="stylesheet" href="css/public.css">
+<link rel="stylesheet" href="css/notice.css">
+<link rel="stylesheet" href="css/common.css">
+<script src='js/main.js'></script>
+{% endblock %} {% block main %}
+<ul class="noticeWrap ui-form-box">
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">类型<span class="redSup">*</span></p>
+            <div class="ui-form-cont">
+                <select name="" class="ui-form-select text-right">
+              <option value="通知">通知</option>
+              <option value="通知2">通知2</option>
+          </select>
+            </div>
+            <i class="arrow-point"></i>
+        </div>
+    </li>
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">标题</p>
+            <div class="ui-form-cont">
+                <input type="text" class="ui-form-input" placeholder="请输入标题">
+            </div>
+        </div>
+    </li>
+    <li class="item">
+        <div class="ui-form-areaBox">
+            <p class="ui-form-area-textarea">
+                <textarea id="input1" placeholder="请输入公告内容......" rows="5" class="wenb1"></textarea>
+            </p>
+            <p class="word-number">
+                <i id="input1-number">0/</i>20000字</p>
+            <ul class="ui-form-photo clearfix">
+                <li>
+                    <a href="javascript:;" class="sc-ico"></a>
+                    <img src="http://tp3.sinaimg.cn/1785329130/180/5719298505/0">
+                </li>
+                <li><a href="javascript:void(0)"><img src="images/btn_upload.png"></a></li>
+            </ul>
+        </div>
+    </li>
+    <li class="item">
+        <p class="head-page">
+            封面图片
+        </p>
+        <ul class="ui-form-photo clearfix">
+            <li>
+                <a href="javascript:;" class="sc-ico"></a>
+                <img src="http://tp3.sinaimg.cn/1785329130/180/5719298505/0">
+            </li>
+            <li><a href="javascript:void(0)"><img src="images/btn_upload.png"></a></li>
+        </ul>
+    </li>
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">作者</p>
+            <div class="ui-form-cont">
+                <input type="text" class="ui-form-input" value="张子萱">
+
+            </div>
+        </div>
+    </li>
+</ul>
+<ul class="noticeWrap ui-form-box">
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">可见范围</p>
+            <div class="ui-form-cont">
+                <select name="" class="ui-form-select text-right">
+                      <option value="全公司">全公司</option>
+                      <option value="全公司">全公司</option>
+                  </select>
+            </div>
+            <i class="arrow-point"></i>
+        </div>
+    </li>
+    <li class="item " id="show-more-wrap">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">显示更多设置</p>
+            <div class="ui-form-cont">
+                <div class="label-switch"><input id="show-more" type="checkbox">
+                    <div class="checkbox"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="item more-choose">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">阅读显示</p>
+            <div class="ui-form-cont">
+                <select name="" class="ui-form-select text-right">
+                          <option value="不显示">不显示</option>
+                          <option value="显示已读">显示已读</option>
+                          <option value="显示未读">显示未读</option>
+                      </select>
+            </div>
+            <i class="arrow-point"></i>
+        </div>
+    </li>
+    <li class="item more-choose">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">分享</p>
+            <div class="ui-form-cont">
+                <select name="" class="ui-form-select text-right">
+                          <option value="不分享">不分享</option>
+                          <option value="允许内部分享">允许内部分享</option>
+                          <option value="允许外部分享">允许外部分享</option>
+                      </select>
+            </div>
+            <i class="arrow-point"></i>
+        </div>
+    </li>
+</ul>
+<ul class="noticeWrap ui-form-box more-choose ">
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">允许成员评论</p>
+            <div class="ui-form-cont">
+                <div class="label-switch"><input type="checkbox" checked>
+                    <div class="checkbox"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">添加水印</p>
+            <div class="ui-form-cont">
+                <div class="label-switch"><input type="checkbox">
+                    <div class="checkbox"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="item">
+        <div class="ui-form ui-form-justify">
+            <p class="ui-form-text">推送提醒</p>
+            <div class="ui-form-cont">
+                <div class="label-switch"><input type="checkbox" checked>
+                    <div class="checkbox"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endblock %}

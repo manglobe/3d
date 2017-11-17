@@ -1,0 +1,142 @@
+@import "studio4_grid.scss";
+
+/**
+*   pos(p,10,20,10,20)
+*   pos(p,$all:10)
+*/
+$positions:( p:position, a:absolute, f:fixed, s:static);
+@mixin pos($pos, $top:auto, $right:auto, $bottom:auto, $left:auto, $all:false) {
+    position: map-get($positions, $pos);
+    @if($all) {
+        top: $all;
+        right: $all;
+        bottom: $all;
+        left: $all;
+    }
+    @else {
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+    }
+}
+
+//absolute
+@mixin abs-center {
+    @include pos(a, $all: 0);
+    margin: auto;
+}
+
+//     垂直居中        
+@mixin img-box($width:1, $padding-top:1, $blank:0) {
+    width: percentage($width);
+    padding-top: percentage($padding-top);
+    position: relative;
+    display: block;
+    overflow: hidden;
+    img {
+        @include pos(a, $all: $blank);
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+        vertical-align: middle;
+        box-sizing: border-box;
+    }
+}
+
+/**
+*   css 三角
+*   delta(12,6,#000,right)
+*/
+@mixin delta($a, $h, $color, $direction:top) {
+    width: 0;
+    height: 0;
+    $trans-border: ($a / 2)+px solid transparent;
+    display: inline-block;
+    border: {
+        top: $trans-border;
+        bottom: $trans-border;
+        left: $trans-border;
+        right: $trans-border;
+    }
+    @if($direction==top) {
+        border-bottom: $h +px solid $color;
+        border-top: 0;
+    }
+    @else if( $direction==bottom) {
+        border-top: $h +px solid $color;
+        border-bottom: 0;
+    }
+    @else if( $direction==left) {
+        border-right: $h +px solid $color;
+        border-left: 0;
+    }
+    @else if( $direction==right) {
+        border-left: $h +px solid $color;
+        border-right: 0;
+    }
+}
+
+/**
+*   透明 
+*   opacity(0.6)
+*   bg-opacity(#000, 0.5)
+*/
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin bg-opacity($color, $opacity:0.5) {
+    $color-op: rgba($color, $opacity);
+    background: $color-op;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#{ie-hex-str($color-op)}', endColorstr='#{ie-hex-str($color-op)}');
+}
+
+/**
+*   线性渐变
+*   line-gradient(right, #000, #fff)
+*/
+$ieGradientStyle:( left:1, right:1, top:0, bottom:0);
+@mixin line-gradient($direction, $starColor, $endColor) {
+    $style: map-get($ieGradientStyle, $direction);
+    @if ($direction==left or $direction==top) {
+        filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr='#{ie-hex-str($endColor)}', endcolorstr='#{ie-hex-str($starColor)}', gradientType=$style);
+        -ms-filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr='#{ie-hex-str($endColor)}', endcolorstr=$starColor, gradientType=$style);
+    }
+    @else {
+        filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr='#{ie-hex-str($starColor)}', endcolorstr='#{ie-hex-str($endColor)}', gradientType='#{$style}');
+        -ms-filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr='#{ie-hex-str($starColor)}', endcolorstr='#{ie-hex-str($endColor)}', gradientType='#{$style}');
+    }
+    background: -webkit-linear-gradient($direction, $endColor, $starColor); //Safari 5.1 - 6 
+    background: -o-linear-gradient($direction, $starColor, $endColor); //Opera 11.1 - 12
+    background: -moz-linear-gradient($direction, $starColor, $endColor); //Firefox 3.6 - 15
+    background: linear-gradient(to $direction, $starColor, $endColor); //标准的语法 
+}
+
+//单行文本
+@mixin one-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+// normal mobile
+@mixin mb {
+    @include media(0, 768) {
+        @content
+    }
+};
+
+//color config
+$colors:( lightest:#c8e9db, lighter:#9a9a9a, light:#8ac6a5, normal:#009944, dark:#2ab176);
+@function color($key) {
+    @if map-has-key($colors, $key) {
+        @return map-get($colors, $key);
+    }
+    @warn "Unknown `#{$key}` in $colors.";
+    @return null;
+}

@@ -1,0 +1,153 @@
+.calendar {
+  background: #fff;
+  position: relative;
+}
+
+.calendar .btndiv {
+  line-height: 0;
+  font-size: 0;
+  background: #f19a63;
+
+}
+
+.calendar .btndiv span {
+  width: 68%;
+  display: inline-block;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  color:#fff;
+  vertical-align: middle;
+  
+}
+
+.calendar .btndiv a {
+  position: relative;
+  display: inline-block;
+  width: 16%;
+  height: 40px;
+  vertical-align: middle;
+  color:#fff;
+}
+
+.calendar .btndiv .leftbtn:after,
+.calendar .btndiv .rigtbtn:after {
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  display: block;
+  position: absolute;
+  top: 14px
+}
+
+.calendar .btndiv .leftbtn:after {
+  left: 21px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  transform: rotate(-135deg)
+}
+
+.calendar .btndiv .rigtbtn:after {
+  right: 21px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg)
+}
+
+.calendar .btndiv a.gray:after {
+  display: none
+}
+
+.calendar .weekdiv {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #fff;
+  line-height: 0;
+  font-size: 0;
+  color: #999;
+  border-bottom: 1px solid #ddd
+}
+
+.calendar .weekdiv span {
+  font-size: 12px;
+  line-height: 30px;
+  display: inline-block;
+  text-align: center;
+  width: 14.285%
+}
+
+.calendar ul {
+  position: absolute;
+  border-top: 1px solid #ddd;
+  top: 70px;
+  background: #fff;
+  line-height: 0;
+  font-size: 0;
+  color: #333;
+  box-shadow: 0 3px 3px #ddd;
+}
+
+.calendar ul li {
+  display: inline-block;
+  width: 14.285%;
+  font-size: 14px;
+  line-height: 32px;
+  padding: 6px 0;
+  text-align: center;
+  vertical-align: middle;
+  height: 44px;
+  border-bottom: 1px solid #ddd;
+}
+
+.calendar ul li:nth-child(7n+1) {
+  color: red
+}
+
+.calendar ul li:nth-child(7n+7) {
+  color: red
+}
+
+.calendar ul li.gray {
+  color: #ccc
+}
+
+.calendar ul li span {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto
+}
+
+.calendar ul li.on1 span {
+  color: #64BE50;
+  border-radius: 50%;
+  border: 1px solid #64BE50;
+}
+
+ 
+.calendar ul li.on span {
+  color: #fff;
+  background: #ffc000;
+  border-radius: 50%;
+  border: 1px solid #ffc000;
+}
+.calendar ul li.checked span {
+  color: #fff;
+  background: #ffc000;
+  border-radius: 50%;
+  border: 1px solid #ffc000;
+}
+
+.calendar ul li.checked span:after {
+  display: none
+}
+
+.calendar ul,.calendar .weekdiv{
+  display: none;
+}

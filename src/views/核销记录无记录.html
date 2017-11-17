@@ -1,0 +1,42 @@
+{% extends "default.html" %} {% block link %}
+<script src="js/modules/calendar/calendar.js"></script>
+<link rel="stylesheet" href="js/modules/calendar/calendar.css"> {% endblock %} {% block main %}
+<main id="page-cancel-detail">
+  <section class="banner">
+    <div class="title">
+      核销人员信息
+    </div>
+    <div class="head img-box">
+      <img src="images/img_kq.png" alt="">
+    </div>
+    <h4 class="name">于丽</h4>
+    <p class="number">工号：20170622</p>
+  </section>
+  <div class="cancel-detail-none">
+    <img src="images/empty_wsj.png" alt="">
+    <p>暂无核销数据</p>
+  </div>
+</main>
+<script>
+  $(function () {
+    var cc = new Calendar();
+
+    cc.signdaylist = {
+      "4": 1,
+      "9": 1,
+      "8": 1,
+      "10": 1,
+    };
+    cc.render();
+    $('#calendarDate').click(function (e) {
+
+      if ($(e.target).is('.text')) {
+        $('.weekdiv').toggle();
+        $('.weekdiv').next().toggle();
+      }
+    });
+
+  });
+</script>
+
+{% endblock %}

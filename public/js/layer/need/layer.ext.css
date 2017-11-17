@@ -1,0 +1,120 @@
+﻿/*提示框 msg*/
+ .wj-msg{
+    background:rgba(40,40,40,0.75);
+    border-radius:5px;
+    min-width:160px;
+    height:50px;
+    border:none;
+    font-family:PingFangSC-Regular;
+    font-size:15px;color:#FFFFFF;
+    line-height:21px;
+    text-align:center;
+}
+.wj-msg .layermcont{
+    padding: 0 10px;
+    height: 100%;
+    line-height: 50px;
+}
+/*警告框 alert*/
+.wj-alert{
+    background:#FFFFFF;
+    border-radius:4px;
+    width:280px;
+    font-family:PingFangSC-Regular;
+    font-size:14px;
+    color:#333333;
+    line-height:21px;
+    /*height:139px;*/
+}
+.wj-alert .layermcont{
+    padding: 15px;
+    text-align:left;
+}
+
+/*.wj-alert .layermbtn{
+   color:#2FB2E8;
+}*/
+.wj-alert .layermbtn span{
+    font-size: 18px;
+    color:#398dee;
+}
+.wj-alert .layermend{
+    width: 0 !important;
+    height: 0!important;
+    overflow: hidden!important;
+}
+/*警告框 alert01*/
+.wj-alert01{
+    background:#FFFFFF;
+    border-radius:4px;
+    width:280px;
+    font-family:PingFangSC-Regular;
+    font-size:14px;
+    color:#333333;
+    line-height:21px;
+    /*height:139px;*/
+}
+.wj-alert01 .layermcont{
+    padding: 15px 15px 35px;
+    text-align:left;
+}
+
+/*prompt*/
+.wj-prompt{
+    font-family:PingFangSC-Regular;
+    font-size:14px;
+    color:#333333;
+    border-radius:8px;
+    width:270px;
+}
+.wj-prompt .layermcont{
+    background:rgba(248,248,248,0.80);
+    padding: 15px;
+    letter-spacing:0px;
+    line-height:21px;
+	border-radius: 8px;
+    text-align:center;
+}
+.wj-prompt .layermbtn{
+    border-top: 1px #cccccc solid;
+    letter-spacing:0px;
+}
+.wj-prompt .layermbtn span:first-child{
+    background:rgba(248,248,248,0.80);
+    width: 134px;
+	height:39px;
+    border-right: solid 1px #cccccc;
+    border-bottom-left-radius:8px;
+    font-size:18px;
+}
+.wj-prompt .layermbtn span:last-child{
+    background:rgba(248,248,248,0.80);
+    color:#398dee;
+	height:39px;
+    border-bottom-right-radius:8px;
+    font-size:18px;
+}
+/*customDialog*/
+.wj-custom{
+    background:#fcfcfc;
+    border-radius:4px !important;
+    width:280px;
+}
+
+/*自定义关闭按钮样式*/
+.wj-alert01 .layermend, .wj-custom .layermend{
+	background:url(close.png) no-repeat center center;
+	background-size:14px;
+	padding:0;
+}
+.wj-alert01 .layermend::before, .wj-alert01 .layermend::after,
+.wj-custom .layermend::before, .wj-custom .layermend::after{
+	height:0;
+}
+
+/*去除高亮*/
+.layermbtn span{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+}
+

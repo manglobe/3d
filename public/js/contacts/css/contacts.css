@@ -1,0 +1,52 @@
+.contact-depart-item,.contact-search-bar,.contact-selected-main,.contact-staff-detail,.contact-staff-item{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}
+.contact-depart-detail,.contact-search-input,.contact-selected-list,.contact-staff-detail,.staff-detail-info{-webkit-box-flex:1;-webkit-flex:1;flex:1}
+.contact-wrap{position:relative;z-index:10;margin-bottom:80px}
+.contact-search-bar{padding:8px 15px;background:#f5f5f5;border-bottom:1px solid #ddd}
+.contact-back-btn{position:relative;display:none;width:40px;height:32px;margin-right:5px;margin-left:-10px}
+.contact-back-btn:after{position:absolute;top:8px;left:16px;display:block;width:15px;height:15px;border-bottom:2px solid #999;border-left:2px solid #999;content:"";-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}
+.contact-search-input{display:block;height:32px;padding:8px;font-size:14px;line-height:16px;background:#fff;border:none;border-bottom-left-radius:4px;border-top-left-radius:4px;outline:0;box-sizing:border-box}
+.contact-search-input::-webkit-input-placeholder{font-size:14px;line-height:16px}
+.contact-search-btn{position:relative;display:block;width:40px;height:32px;background:#60A0F4;border-top-right-radius:4px;border-bottom-right-radius:4px}
+.contact-search-btn:before{position:absolute;top:7px;left:11px;width:10px;height:10px;border:2px solid #fff;border-radius:50%;content:""}
+.contact-search-btn:after{position:absolute;top:17px;left:23px;width:2px;height:8px;background:#fff;content:"";-webkit-transform:rotate(-42deg);-moz-transform:rotate(-42deg);transform:rotate(-42deg)}
+.contact-nav-bar{padding:0 10px;background:#fff;border-bottom:1px solid #ddd}
+.contact-nav-list{overflow-y:hidden;font-size:0;line-height:0;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.contact-nav-item{position:relative;display:inline-block;padding:10px;font-size:14px;line-height:20px;color:#398DEE;text-decoration:none}
+.contact-nav-item:last-child{color:#666}
+.contact-nav-item:not(:first-child):before{position:absolute;top:17px;left:-5px;display:block;width:6px;height:6px;border-top:1px solid #999;border-right:1px solid #999;content:"";-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}
+.contact-depart-list,.contact-selected-depart,.contact-selected-staff,.contact-staff-list{list-style:none;list-style-type:none}
+.contact-depart-detail,.contact-staff-detail{font-size:16px;color:#333;border-bottom:1px solid #ddd}
+.contact-select-label{display:block;width:56px;height:56px;line-height:50px;text-align:center}
+.contact-select-checkbox{position:relative;display:inline-block;width:22px;height:22px;vertical-align:middle;border:1px solid #ddd;border-radius:50%;outline:0;box-sizing:border-box;-webkit-appearance:none}
+.contact-select-checkbox:checked{background:#64be50;border:1px solid #64be50}
+.contact-select-checkbox:checked:after,.contact-select-checkbox:disabled:after{position:absolute;top:6px;left:4px;width:10px;height:4px;border-bottom:2px solid #fff;border-left:2px solid #fff;content:"";-webkit-transform:rotate(-50deg);-moz-transform:rotate(-50deg);transform:rotate(-50deg)}
+.contact-select-checkbox:disabled{background:#c9cace;border:1px solid #c9cace}
+.contact-select-checkbox.contact-select-noallow:disabled:after,.contact-select-checkbox.contact-select-noallow:disabled:before{position:absolute;top:9px;left:3px;display:block;width:14px;height:2px;background:#fff;border:none;content:""}
+.contact-select-checkbox.contact-select-noallow:disabled:before{-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);transform:rotate(-45deg)}
+.contact-select-checkbox.contact-select-noallow:disabled:after{-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}
+.contact-select-checkbox.contact-select-goto:disabled:after,.contact-select-checkbox.contact-select-goto:disabled:before{position:absolute;display:block;border:none;content:""}
+.contact-select-checkbox.contact-select-goto:disabled:before{top:50%;left:4px;width:10px;height:2px;margin-top:-1px;background:#fff}
+.contact-select-checkbox.contact-select-goto:disabled:after{top:6px;left:7px;width:6px;height:6px;border-top:2px solid #fff;border-right:2px solid #fff;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}
+.contact-depart-detail{position:relative;padding:0 40px;overflow:hidden;line-height:56px;color:#333;text-decoration:none;text-overflow:ellipsis;white-space:nowrap}
+.contact-depart-detail:before{top:50%!important;margin-top:-15px}
+.contact-depart-detail.my:before{position:absolute;top:50%;left:0;display:block;width:30px;height:30px;margin-top:-15px;background-color:#FFD56E;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAJ1BMVEUAAAD///////////////////////////////////////////////+uPUo5AAAADHRSTlMAwIA/nxDgsHDP7yDNDKXbAAAAY0lEQVRIx2MYISD8DBQ44FDgA1NwBIeCNWcIGHEGDo4HEFBwZiohBSeNMUEAUAFekE1IwXFCCs5QQYESAUCF2BQkAAg6clTBqIJRBUNVQQ5++WMMOvgVnGDgEMQLGhhGAXEAAJTh7bEiyqG/AAAAAElFTkSuQmCC);background-position:50% 50%;background-repeat:no-repeat;background-size:20px;border-radius:2px;content:""}
+.contact-depart-detail:after{position:absolute;top:24px;right:15px;width:8px;height:8px;border-top:2px solid #c7c7c7;border-right:2px solid #c7c7c7;content:"";-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}
+.staff-detail-icon{display:block;width:30px;height:30px;margin-right:10px;border:none}
+.staff-detail-name{padding:8px 0 2px;line-height:20px}
+.staff-detail-other{height:20px;padding-bottom:6px;font-size:14px;line-height:20px;color:#999;box-sizing:content-box}
+.staff-detail-jobs{margin-right:6px}
+.contact-search-nodata{display:none;padding-top:60px;margin-top:40px;font-size:16px;line-height:24px;color:#999;text-align:center;background:url() 50% 0 no-repeat;background-size:60px}
+.contact-foot-bar{position:fixed;bottom:0;left:0;z-index:10;width:100%;background:#fff;border-top:1px solid #ddd}
+.contact-selected-count{padding:0 15px;font-size:14px;line-height:30px;color:#666;background:#F5F5F5;opacity:.9}
+.contact-selected-main{height:50px;padding:0 10px;box-sizing:content-box}
+.contact-selected-list{height:40px;padding-top:10px;overflow-y:hidden;font-size:0;line-height:0;white-space:nowrap;box-sizing:content-box;-webkit-overflow-scrolling:touch}
+.contact-selected-depart,.contact-selected-staff{display:inline-block;vertical-align:middle}
+.contact-selected-staff .selected-staff-item{display:inline-block;margin-right:10px}
+.contact-selected-staff .selected-staff-icon{display:inline-block;width:30px;height:30px;vertical-align:middle;border:none}
+.contact-selected-staff .selected-staff-name{display:inline-block;padding:0 8px;font-size:14px;line-height:30px;color:#666;vertical-align:middle;background:#f5f5f5}
+.contact-selected-depart .selected-depart-item{position:relative;display:inline-block;padding:0 8px 0 38px;margin-right:10px;font-size:14px;line-height:30px;color:#666;background:#F5F5F5;border-radius:2px}
+.contact-depart-detail:before,.contact-selected-depart .selected-depart-item:before{position:absolute;top:0;left:0;display:block;width:30px;height:30px;background-color:#60a0f4;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMAwIBA0PAgcBAwkGBQ4KCwmS99wQAAAT9JREFUWMPt1ttugzAMBmA7ZxII//s/7TYxWiwnK03VSev6XSJjQZzEprfnC4EeYCs+1YkGZXzLNGTFxUoDIg7iQIIFB8vAAkKwdK8CYR5YAiH+/i8kCHQ/xgGPnAKPC59owCxqMGJy2+tuolGzYTYz/W/FmEKPYIDfCc4nKNzgAc8NhTSDO5hnJXB8guslOHvz2XeCbgJrjAl0QvgMtPSKQmXHOdy+1kOsXGMgKWVscrrRWEzzNCSHnUs/tjYVqDvx2m6u+shm2UavbL+9T52hYxXPa3vA0HdGFj92xf0Rh1XgBlJ/yPLimW/PlHBnv8Adi6DKECAkMX5vameoLL1RVwfuktexZFsVY7WGqr7+sm+zKJjaXT6IeWqB3vdxD42Ho8R7YCAhxa8US0kibXWAq3JIi+zhOVLDa95Tf8EHp/Ezv8xZCL0AAAAASUVORK5CYII=);background-position:50% 50%;background-repeat:no-repeat;background-size:24px;border-radius:2px;content:""}
+.contact-confirm-btn{display:block;padding:0 15px;margin-left:10px;font-size:16px;line-height:30px;color:#fff;text-decoration:none;background:#60A0F4;border-radius:2px}
+.contact-gotop-btn{position:fixed;right:20px;bottom:90px;display:none;width:40px;height:40px;background:rgba(0,0,0,.3);border-radius:4px}
+.contact-gotop-btn:before{position:absolute;top:9px;left:19px;width:2px;height:22px;background:#fff;content:""}
+.contact-gotop-btn:after{position:absolute;top:12px;left:12px;width:14px;height:14px;border-top:2px solid #fff;border-left:2px solid #fff;content:"";-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg)}

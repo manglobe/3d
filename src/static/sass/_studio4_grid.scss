@@ -1,0 +1,87 @@
+/**
+*   media(768,u) =>768 ~ ∞
+*/
+
+$sm: 480;
+$mb: 768;
+$pad: 1024;
+$pc: 2560;
+$screen:( sm: 480, mb: 768, pad: 1024, pc: 2560, );
+@mixin media($size, $area:false) {
+    @if(map-has-key($screen, $size)) {
+        $size: map-get($screen, $size)
+    }
+    @if($area) {
+        @if ($area==u) {
+            @media screen and (min-width: $size + px) {
+                @content
+            }
+        }
+        @else {
+            @media screen and (min-width: $size + px) and (max-width:($area - 1) + px) {
+                @content
+            }
+        }
+    }
+    @else {
+        @media screen and (max-width: ($size - 1) + px) {
+            @content
+        }
+    }
+}
+
+
+/**
+*   Grid percentage
+*   @include grid(1,2,'pc')
+*/
+
+@mixin grid($grid-size, $grid-box:10, $screen:false, $area:false) {
+    @if($screen) {
+        @if($area) {
+            .grid-#{$grid-size}-#{$grid-box}-#{$screen}-#{$area} {
+                @include media($screen, $area) {
+                    width: percentage($grid-size / $grid-box);
+                    float: left;
+                    display: block;
+                    @content
+                }
+            }
+        }
+        @else {
+            .grid-#{$grid-size}-#{$grid-box}-#{$screen} {
+                @include media($screen) {
+                    width: percentage($grid-size / $grid-box);
+                    float: left;
+                    display: block;
+                    @content
+                }
+            }
+        }
+    }
+    @else {
+        .grid-#{$grid-size}-#{$grid-box} {
+            width: percentage($grid-size / $grid-box);
+            float: left;
+            @content;
+        }
+    }
+}
+
+
+/**
+*   @include grid-init(num); 实例化所有子格class
+*/
+
+@mixin grid-init($box, $screen: false, $area:false) {
+    @if($screen) {
+        @for $i from 1 to $box {
+            @include grid($i, $box, $screen, $area)
+        }
+    }
+    @else {
+        @for $i from 1 to $box {
+            @include grid($i, $box)
+        }
+    }
+}

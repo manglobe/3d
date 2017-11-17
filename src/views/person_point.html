@@ -1,0 +1,84 @@
+{% extends "default.html" %} {% block main %}
+<main id="page-person-point">
+    <div class="banner">
+        <div class="person-point">
+            <span>总积分</span>
+            <b>6005</b>
+        </div>
+        <div class="bg-circle bg-circle1"></div>
+        <div class="bg-circle bg-circle2"></div>
+    </div>
+    <article class="tab-wrap ">
+        <nav class="tab-nav">
+            <a href="person_point.html" class="tab-nav-item active">收入</a>
+            <a href="person_point_out.html" class="tab-nav-item">支出</a>
+        </nav>
+        <ul class="tab-content ">
+            <li class="tab-content-item active">
+                <div class="poin-item">
+                    <h5 class="poin-item-title">
+                        <b>学习</b>
+                        <span>太阳能光伏原理阐述太阳能光伏原理阐述太阳能xxxxxxxxxxxx</span>
+                    </h5>
+                    <p class="poin-item-remark">
+                        <span>图区专区11111111111111111122222222222111111111111</span>
+                        <a class="point-remark-more" data-msg="这里是赠送积分的备注这里是赠送积分的备注这里是赠送积分的备注。">更多</a>
+                    </p>
+                    <div class="poin-item-date">
+                        <span class="date">2017-06-14</span>
+                        <span class="point add">+500</span>
+                    </div>
+
+                </div>
+                <div class="poin-item">
+                    <h5 class="poin-item-title">
+                        <b>参与投票</b>
+                        <span>我最喜爱的年会表演节目</span>
+                    </h5>
+                    <p class="poin-item-remark">
+                        <span>图区专区</span>
+                        <a class="point-remark-more" data-msg="这里是赠送积分的备注这里是赠送积分的备注这里是赠送积分的备注。">更多</a>
+                    </p>
+                    <div class="poin-item-date">
+                        <span class="date">2017-06-14</span>
+                        <span class="point add">+500</span>
+                    </div>
+
+                </div>
+            </li>
+
+        </ul>
+    </article>
+</main>
+<script>
+    //弹窗
+    var remarkMore = {
+        show: function () {
+            $('.poin-item-remark').each(function () {
+
+                // var num = $(this).find('span').text().trim().length
+                var w = $(this).find('span').width()
+                //  var fontWidth = $(this).css('fontSize').match(/\d+/g)[0]
+                var width = $(this).innerWidth();
+                if (w >= width && w != 0) {
+                    console.log(w, width)
+                    $(this).find('.point-remark-more').show();
+                }
+            })
+        },
+        layer: function () {
+            $('.point-remark-more').click(function () {
+                layer.alert01($(this).data('msg'), '备注')
+            })
+        },
+        init: function () {
+            remarkMore.show()
+            remarkMore.layer()
+        }
+
+    }
+    $(function () {
+        remarkMore.init();
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,122 @@
+//config
+
+/*重置默认样式*/
+
+div,
+section,
+article,
+header,
+nav,
+ul,
+ol,
+li,
+a,
+b,
+span,
+i,
+em,
+b,
+footer,
+img,
+embed,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+form,
+textarea,
+p,
+dt,
+dd,
+address {
+    margin: 0;
+    padding: 0;
+    font-size: normal;
+    font-style: normal;
+    list-style: none;
+    font-weight: normal;
+    font-family: HiraginoSansGB W3,Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: HiraginoSansGB W3,Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    &:link,
+    &:visited,
+    &:focus,
+    &:hover {
+        text-decoration: none; // color: inherit;
+    }
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+@import "studio4_mixin.scss";
+.img-box {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        max-width: 100%;
+        max-height:100%;
+    }
+}
+
+.img-box-l {
+    @include img-box(4, 3)
+}
+
+.img-box-h {
+    @include img-box(3, 4)
+}
+
+//clear-fix
+.clear-fix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+//checkbox
+input[type=checkbox] {
+    // margin-top:-4px;
+    &:focus {
+        outline: none
+    }
+}
+
+
+//textarea
+textarea{
+
+    padding: 4px 10px ;
+    resize: none;
+    border: none;
+
+}

@@ -1,0 +1,105 @@
+{% extends "default.html" %} {% block link %}
+<!-- <link rel="stylesheet" href="css/public.css"> -->
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/appshop.css">
+<script>
+  window.onload = function () {
+    var wrap = document.getElementById('app-wrap');
+    var box = document.getElementById('app-box');
+    var year = document.getElementById('year');
+
+    wrap.getElementsByClassName('appPlan')[0].onclick = function () {
+      if (!Array.from(this.classList).includes('active')) {
+        this.classList.add('active')
+        Array.from(box.children).forEach(function (element) {
+          element.classList.add('active')
+        });
+      } else {
+        this.classList.remove('active')
+        Array.from(box.children).forEach(function (element) {
+          element.classList.remove('active')
+        });
+      }
+
+    }
+    box.onclick = function (e) {
+      e.target.classList.toggle('active')
+    }
+    year.onclick = function (e) {
+      Array.from(year.children).forEach(function (element) {
+          element.classList.remove('active')
+        });
+      e.target.classList.toggle('active')
+    }
+  }
+</script>
+{% endblock %} {% block main %}
+<div class='wrap'>
+  <span class="single-line">
+    <b>
+      企业名称：
+    </b>
+    <span>微加运营团队</span>
+  </span>
+  <span class="single-line">
+    <b>
+      授权CorpID：
+    </b>
+    <span>wxa8e3b0affb7cdc8a</span>
+  </span>
+  <span class="single-line">
+    <b>
+      授权应用：
+    </b>
+    <span>
+      <div id='app-wrap'>
+        <span class="appPlan">全应用套餐</span>
+        <section id='app-box'>
+          <span class="appItem active">企业相册</span>
+          <span class="appItem ">员工关怀</span>
+          <span class="appItem ">新闻公告</span>
+          <span class="appItem ">企业培训</span>
+          <span class="appItem ">企业内刊</span>
+          <span class="appItem ">会议助手</span>
+          <span class="appItem ">考勤请假</span>
+          <span class="appItem ">投票调研</span>
+          <span class="appItem ">审批报销</span>
+          <span class="appItem ">工作报告</span>
+          <span class="appItem ">外勤签到</span>
+          <span class="appItem ">活动上墙</span>
+          <span class="appItem ">知识百科</span>
+          <span class="appItem ">快递助手</span>
+          <span class="appItem ">在线考试</span>
+          <span class="appItem ">微社区</span>
+        </section>
+      </div>
+    </span>
+  </span>
+  <span class="single-line">
+    <b>
+      购买年数：
+    </b>
+    <span id="year">
+      <span class="timeItem ">1年</span>
+      <span class="timeItem ">2年</span>
+      <span class="timeItem ">3年</span>
+    </span>
+  </span>
+  <span class="single-line">
+    <b>
+      购买人数：
+    </b>
+    <span>
+      <span class="">
+        <input type="text" value="250" max="1000000">(请输入50的倍数)
+      </span>
+      <i class="point person">
+        当前通讯录 120 人
+      </i>
+    </span>
+  </span>
+  <section>
+    <a class="btn">立即购买</a>
+  </section>
+</div>
+{% endblock %}

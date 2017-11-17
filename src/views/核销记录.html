@@ -1,0 +1,240 @@
+{% extends "default.html" %} {% block link %}
+<script src="js/modules/calendar/calendar.js"></script>
+<link rel="stylesheet" href="js/modules/calendar/calendar.css"> {% endblock %} {% block main %}
+<main id="page-cancel-detail">
+  <section class="banner">
+    <div class="title">
+      核销人员信息
+    </div>
+    <div class="head img-box">
+      <img src="images/img_kq.png" alt="" id="personHead">
+    </div>
+    <h4 class="name" id="personName">于丽</h4>
+    <p class="number" id="personId">工号：20170622</p>
+  </section>
+  <div class="calendar" id="calendarDate"></div>
+
+  <article class="cancel-detail-list">
+    <div class="cancel-detail-none">
+      <img src="images/empty_wsj.png" alt="">
+      <p>暂无核销数据</p>
+    </div>
+    <ul id="data-list">
+      <li>
+        <section class="tag-box">
+          <div class="tag-img img-box">
+            <img src="images/icon_jfgz.png" alt="">
+          </div>
+          <div class="tag-content">
+            <h5>Biella进口亚麻织品四件套床上用品四季皆宜</h5>
+            <p class="tag-date">
+              <span class="">核销时间：2017.06.11 12:00</span>
+              <span class="tag-person">兑换人：黎语莱</span>
+            </p>
+
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="tag-box">
+          <div class="tag-img img-box">
+            <img src="images/icon_jfgz.png" alt="">
+          </div>
+          <div class="tag-content">
+            <h5>Biella进口亚麻织品四件套床上用品四季皆宜</h5>
+            <p class="tag-date">
+              <span class="">核销时间：2017.06.11 12:00</span>
+              <span class="tag-person">兑换人：黎语莱</span>
+            </p>
+
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="tag-box">
+          <div class="tag-img img-box">
+            <img src="images/icon_jfgz.png" alt="">
+          </div>
+          <div class="tag-content">
+            <h5>Biella进口亚麻织品四件套床上用品四季皆宜</h5>
+            <p class="tag-date">
+              <span class="">核销时间：2017.06.11 12:00</span>
+              <span class="tag-person">兑换人：黎语莱</span>
+            </p>
+
+          </div>
+        </section>
+      </li>
+      <li>
+        <section class="tag-box">
+          <div class="tag-img img-box">
+            <img src="images/icon_jfgz.png" alt="">
+          </div>
+          <div class="tag-content">
+            <h5>Biella进口亚麻织品四件套床上用品四季皆宜</h5>
+            <p class="tag-date">
+              <span class="">核销时间：2017.06.11 12:00</span>
+              <span class="tag-person">兑换人：黎语莱</span>
+            </p>
+
+          </div>
+        </section>
+      </li>
+    </ul>
+  </article>
+
+</main>
+<script>
+  var cc = new Calendar();
+
+  var controller = {
+    dateToObj: function (str) {
+      if (str) {
+        return {
+          y: str.match(/\d+/g)[0],
+          m: str.match(/\d+/g)[1],
+          d: str.match(/\d+/g)[2]
+        }
+      }
+    },
+    recordDate: function (arr, localString, day) {
+      var localDate = new controller.dateToObj(localString)
+      var signdaylistObj = {}
+      for (var i = 0; i < arr.length; i++) {
+        var obj = new controller.dateToObj(arr[i]);
+        obj.y === localDate.y && obj.m === localDate.m ?
+          signdaylistObj[obj.d] = 1 :
+          true
+      }
+      signdaylistObj[day]=''
+      cc.signdaylist = signdaylistObj;
+   
+      cc.render(day);
+    },
+    personData: function (data) {
+      $('#personId').text('工号' + data.id)
+      $('#personName').text(data.name)
+      $('#personHead').attr('src', data.head)
+    },
+    listData: function (arr) {
+      if (arr.length > 0) {
+        var domString = ''
+        for (var i = 0; i < arr.length; i++) {
+          var _this = arr[i]
+          console.log(_this.picUrl)
+          domString +=
+            `<li><section class="tag-box">
+                  <div class="tag-img img-box">
+                      <img src="${_this.picUrl}" alt="">
+                  </div>
+                  <div class="tag-content">
+                    <h5>${_this.comName}</h5>
+                    <p class="tag-date">
+                      <span class="">核销时间：${_this.cancelTime.year+1900}.${_this.cancelTime.month}.${_this.cancelTime.day} ${_this.cancelTime.hours}:${_this.cancelTime.minutes}</span>
+                      <span class="tag-person">兑换人：${_this.dhName}</span>
+                    </p>
+                  </div>
+                </section></li>`
+        }
+        document.getElementById('data-list').innerHTML = domString;
+      } else {
+        $('.cancel-detail-none').show()
+      }
+    },
+    init: function (data, day) {
+    
+      controller.listData(data.list)
+      controller.recordDate(data.hxRecordDate, $('#calendarDate').find('.text').text(), day)
+      controller.personData({
+        id: data.hxEmloyeeId,
+        name: data.hxPersonName,
+        head: data.hxHeadImage,
+      })
+    }
+
+  }
+
+  var ajaxFun = function (date, day) {
+    $.ajax({
+      url: 'http://192.168.1.139:8090/exchangeRecord/hxIndex',
+      type: 'get',
+      data: {
+        time: date
+      },
+      success: function (data) {
+        controller.init(data,day)
+      },
+      error: function () {
+
+      }
+    })
+  }
+  var calendarClickEvent = {
+    getDate: function (day, monthAdd) {
+
+      var monthAdd = +monthAdd || 0;
+      var str = $('#calendarDate').find('.text').text().replace(/\d+日/, day + '日')
+      var localDate = new controller.dateToObj(str)
+      console.log(localDate)
+      var date = new Date()
+      date.setDate(localDate.d)
+      date.setMonth(+localDate.m + monthAdd - 1)
+      date.setFullYear(localDate.y)
+      console.log(date)
+      return date
+    },
+    eventHandler: function () {
+      document.getElementById('calendarDate').addEventListener('click',
+        function (event) {
+          if (event.target.parentNode.tagName === 'LI') { //日历上的日期
+            calendarClickEvent.clickDay(event)
+          } else if (event.target.className === 'text') { //顶部按钮日期
+            calendarClickEvent.clickText()
+          } else if (event.target.tagName === 'A' && event.target.parentNode.className ===
+            'btndiv') { //上下月
+            calendarClickEvent.clickBtn(event)
+          }
+        })
+    },
+
+    clickDay: function (event) {
+
+      ajaxFun(calendarClickEvent.getDate(event.target.textContent), event.target.textContent)
+      $('.weekdiv').hide();
+      $('.weekdiv').next().hide();
+    },
+    clickBtn: function (event) {
+     
+      var monthAdd;
+      event.target.className === 'leftbtn' ? monthAdd = -1 : monthAdd = 1;
+      console.log($('#calendarDate').find('.text').text())
+      var day = $('#calendarDate').find('.text').text().match(/(\d+)日/, '$1')[
+        1]
+      ajaxFun(calendarClickEvent.getDate(day, monthAdd), day)
+    },
+    clickText: function () {
+
+      $('.weekdiv').toggle();
+      $('.weekdiv').next().toggle();
+
+    },
+    init: function () {
+      calendarClickEvent.eventHandler()
+
+    }
+
+  }
+
+  $(function () {
+
+    cc.render();
+    var nowDate = new Date()
+    nowDate.toLocaleDateString();
+    ajaxFun(nowDate)
+    calendarClickEvent.init()
+
+
+  });
+</script>
+
+{% endblock %}

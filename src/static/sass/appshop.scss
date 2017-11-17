@@ -1,0 +1,80 @@
+.wrap{
+  width: 1024px;
+  margin: 20px auto;
+}
+.single-line{
+  display: flex;
+  font-size: 14px;
+  color: #333;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-bottom: 20px;
+  max-width: 900px;
+  &>b{
+    min-width: 87px;
+    margin-right: 10px;
+    display: block;
+    font-weight: 400;
+  }
+  &>span{
+    display: block;
+    flex-shrink: 1;
+  }
+}
+
+.appPlan, .appItem, .timeItem{
+  
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background: ffff;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  line-height: 40px;
+  border: 1px solid #eaeaea;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+  &.active{
+    border-color: #ff7d34;
+  }
+}
+input[type=text]{
+  width: 120px;
+  position: relative;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+}
+.point{
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0;
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: top;
+}
+.btn{
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  background: #fd9802;
+  border: 1px solid #e18803;
+  color: #fff;
+  width: 144px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  padding: 0;
+  font-size: 16px;
+  margin-right: 20px;
+}

@@ -1,0 +1,13 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# My configurations:
+*.jpg
+*.png
+*.gif
+block/*
+node_modules
+dist
+dev

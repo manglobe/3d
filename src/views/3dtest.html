@@ -1,0 +1,170 @@
+{% extends "default.html" %} {% block link %}
+<script src="./js/modules/three.min.js"></script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%
+  }
+</style>
+{% endblock %} {% block main %}
+<div id="1">
+
+</div>
+<div id="11">
+
+</div>
+<div id="12">
+
+</div>
+<div id="2">
+
+</div>
+<script>
+  class BASE {
+    constructor(params,type) {
+      this.params = params
+      this.scene = new THREE.Scene()
+      this.camera = new THREE.PerspectiveCamera(75, params.size[0] / params.size[1] || 1, 0.1, 1000)
+      this.renderer = new THREE.WebGLRenderer()
+      // this.geometry = new THREE[type](params.geometry[0] || 1, params.geometry[1] || 1, params.geometry[2] || 1);
+      this.geometry = type;
+      this.material = new THREE.MeshBasicMaterial(params.material || {
+        color: 0x00ff00
+      });
+      // this.material = new THREE.MeshBasicMaterial({map:textureC});
+      this.mesh = new THREE.Mesh(this.geometry, this.material)
+
+    };
+    render() {
+      this.renderer.setSize(this.params.size[0], this.params.size[1]);
+      document.getElementById(this.params.id).appendChild(this.renderer.domElement)
+      this.scene.add(this.mesh);
+      this.camera.position.z = 200;
+      this.renderer.render(this.scene, this.camera);
+      return this
+    }
+
+    animation() {
+      requestAnimationFrame(() => this.animation.call(this));
+      this.params.animeFunc && this.params.animeFunc(this)
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+  class CIRCLE extends BASE{
+    constructor(params) {
+      let circle= new THREE.CircleGeometry(params.geometry[0] || 1, params.geometry[1] || 1, params.geometry[2] || 1);
+      super(params, circle); 
+    }
+  }
+  class BOX extends BASE{
+    constructor(params) {
+    let  box= new THREE.BoxGeometry(params.geometry[0] || 1, params.geometry[1] || 1, params.geometry[2] || 1);
+
+    super(params, box); 
+    }
+  }
+  var textureA = new THREE.TextureLoader().load("./images/head/IMG_0011.JPG");
+  textureA.needsUpdate = true;
+
+
+  var d = new CIRCLE({
+    geometry: [70, 70],
+    id: 12,
+    size: [200, 200],
+    material: {
+      map:textureA
+    },
+    animeFunc: (t) => {
+      // t.mesh.rotation.x += 0.05;
+      t.mesh.rotation.y += 0.05;
+      // t.camera.position.z += 0.05;
+    }
+  })
+  d.render().animation()
+ 
+  class BALL {
+    constructor(params) {
+      this.params = params
+      this.scene = new THREE.Scene()
+      this.camera = new THREE.PerspectiveCamera(75, params.size[0] / params.size[1] || 1, 0.1, 1000)
+      this.renderer = new THREE.WebGLRenderer()
+      this.geometry = new THREE.SphereGeometry(params.geometry[0] || 1, params.geometry[1] || 1, params.geometry[2] ||
+        1);
+      this.material = new THREE.MeshBasicMaterial(params.material || {
+        color: 0x00ff00
+      });
+      this.mesh = new THREE.Mesh(this.geometry, this.material)
+
+    };
+
+    render() {
+      this.renderer.setSize(this.params.size[0], this.params.size[1]);
+      document.getElementById(this.params.id).appendChild(this.renderer.domElement)
+      this.scene.add(this.mesh);
+      this.camera.position.z = 10;
+      this.renderer.render(this.scene, this.camera);
+      return this
+    }
+
+    animation() {
+      requestAnimationFrame(() => this.animation.call(this));
+      this.params.animeFunc && this.params.animeFunc(this)
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+  // var textureA =  THREE.TextureLoader("./images/head/IMG_0044.JPG");
+  // // var textureA = new THREE.Texture(document.getElementById('3').children[0]);
+  // textureA.needsUpdate = true;
+
+  var a = new BOX({
+    geometry: [70, 70, 70],
+    id: 1,
+    size: [200, 200],
+    material: {
+      map: textureA,
+    },
+    animeFunc: (t) => {
+      t.mesh.rotation.x += 0.05;
+      t.mesh.rotation.y += 0.05;
+      // t.camera.position.z += 0.05;
+    }
+  })
+  a.render().animation()
+  var c = new BOX({
+    geometry: [70, 70, 70],
+    id: 11,
+    size: [200, 200],
+    material: {
+      color: 0xff4400
+    },
+    animeFunc: (t) => {
+      t.mesh.rotation.x += 0.05;
+      t.mesh.rotation.y += 0.05;
+      // t.camera.position.z += 0.05;
+    }
+  })
+  c.render().animation()
+
+  var texture = new THREE.Texture(document.getElementById('11').children[0]);
+  // var texture = new THREE.TextureLoader().load("./images/head/IMG_0011.JPG");
+  texture.needsUpdate = true;
+  var b = new BALL({
+    geometry: [2, 200, 200],
+    id: 2,
+    size: [400, 300],
+    material: {
+      map: texture
+    },
+    animeFunc: (t) => {
+      t.mesh.rotation.x += 0.05;
+      t.mesh.rotation.y += 0.05;
+    }
+  })
+  b.render().animation()
+</script>
+{% endblock %}
